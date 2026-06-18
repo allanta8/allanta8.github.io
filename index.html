@@ -182,7 +182,7 @@
 
   /* ---------- FEATURED WORK ---------- */
   .featured-grid{
-    display:grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
   }
   .feature-card{
     background: var(--graphite);
@@ -203,13 +203,7 @@
   }
   .feature-card:hover::after{ opacity: 1; }
 
-  .card-top{ display:flex; justify-content: space-between; align-items: flex-start; }
-  .card-icon{
-    width: 38px; height: 38px; border-radius: 9px;
-    background: var(--slate); border: 1px solid var(--wire);
-    display:flex; align-items:center; justify-content:center;
-    font-size: 1.1rem;
-  }
+  .card-top{ display:flex; justify-content: flex-end; }
   .pill{
     font-family:'IBM Plex Mono', monospace; font-size: 0.7rem;
     padding: 4px 10px; border-radius: 999px; letter-spacing: 0.04em;
@@ -242,16 +236,7 @@
   .feature-card:hover .card-link{ color: var(--cyan); }
 
   /* ---------- REPO GRID ---------- */
-  .filter-row{ display:flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-  .filter-pill{
-    font-family:'IBM Plex Mono', monospace; font-size: 0.8rem;
-    padding: 8px 16px; border-radius: 999px; border: 1px solid var(--wire);
-    color: var(--ghost); cursor: pointer; transition: all .15s ease; background:none;
-  }
-  .filter-pill:hover{ border-color: var(--purple); color: var(--paper); }
-  .filter-pill.active{ background: var(--gradient); color: var(--ink); border-color: transparent; }
-
-  .repo-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .repo-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .repo-card{
     background: var(--slate); border: 1px solid var(--wire); border-radius: 12px;
     padding: 20px; transition: border-color .15s ease, transform .15s ease;
@@ -352,15 +337,19 @@
         <div class="ticker-title"><span>STATUS</span><span>UPDATED 2026</span></div>
         <div class="ticker-row">
           <div><div class="ticker-name">ViewDAO</div><div class="ticker-meta">Intelligent publishing OS</div></div>
-          <div class="delta up">SHIPPED</div>
+          <div class="delta live">LIVE</div>
         </div>
         <div class="ticker-row">
           <div><div class="ticker-name">slop-check</div><div class="ticker-meta">AI-slop audit skill</div></div>
           <div class="delta up">SHIPPED</div>
         </div>
         <div class="ticker-row">
-          <div><div class="ticker-name">Voice Personas</div><div class="ticker-meta">8-persona content system</div></div>
+          <div><div class="ticker-name">Gemradar</div><div class="ticker-meta">Solana memecoin radar</div></div>
           <div class="delta up">SHIPPED</div>
+        </div>
+        <div class="ticker-row">
+          <div><div class="ticker-name">Roseon App</div><div class="ticker-meta">Multi-chain crypto app</div></div>
+          <div class="delta live">LIVE</div>
         </div>
       </div>
     </div>
@@ -371,7 +360,7 @@
     <div class="wrap">
       <div class="section-head">
         <div class="section-label">Featured Work</div>
-        <h2>Three things I'd point a client to first</h2>
+        <h2>A few things I'd point a client to first</h2>
         <p class="section-sub">Not every repo deserves your attention. These do — they're live, generating outcomes, or running in production right now.</p>
       </div>
 
@@ -380,8 +369,7 @@
         <!-- ViewDAO -->
         <div class="feature-card">
           <div class="card-top">
-            <div class="card-icon">◆</div>
-            <span class="pill shipped">SHIPPED</span>
+            <span class="pill live">LIVE</span>
           </div>
           <h3>ViewDAO</h3>
           <p>Intelligent publishing OS for finance, AI, and crypto creators — market intelligence, AI drafting, and quality scoring wired into one studio. Private repo; the white paper covers architecture, accountability mechanics, and the AI Credits economy.</p>
@@ -390,14 +378,13 @@
             <span class="tag">Market Intelligence</span>
             <span class="tag">AI Credits</span>
           </div>
-          <div class="card-metric">Status: <strong>shipped, private repo</strong></div>
+          <div class="card-metric">Status: <strong>live, private repo</strong></div>
           <a class="card-link" href="https://viewdao.com/docs.html" target="_blank" rel="noopener">Read the white paper →</a>
         </div>
 
         <!-- slop-check -->
         <div class="feature-card">
           <div class="card-top">
-            <div class="card-icon">⚡</div>
             <span class="pill shipped">SHIPPED</span>
           </div>
           <h3>slop-check</h3>
@@ -411,73 +398,60 @@
           <a class="card-link" href="https://github.com/allanta8/slop-check" target="_blank" rel="noopener">View repo →</a>
         </div>
 
-        <!-- Voice Personas -->
+        <!-- Gemradar -->
         <div class="feature-card">
           <div class="card-top">
-            <div class="card-icon">▣</div>
             <span class="pill shipped">SHIPPED</span>
           </div>
-          <h3>Voice Personas</h3>
-          <p>A system of 8 defined voice personas — Strategist, Builder, Degen, Educator, and more — for generating X content that sounds like a specific human, not an AI. Mix-and-match personas for tone and structure.</p>
+          <h3>Gemradar</h3>
+          <p>High-velocity memecoin intelligence and trading dashboard for the Solana ecosystem — real-time radar intercepts, automated risk safeguards, and trending/winners/losers market analytics in one tactical view.</p>
           <div class="stack-tags">
-            <span class="tag">Claude Skill</span>
-            <span class="tag">8 Personas</span>
-            <span class="tag">Persona Mixing</span>
+            <span class="tag">Solana</span>
+            <span class="tag">React + Vite</span>
+            <span class="tag">Market Radar</span>
           </div>
-          <div class="card-metric">Coverage: <strong>8 personas, mixable</strong></div>
-          <a class="card-link" href="https://github.com/allanta8/Voice-Clone" target="_blank" rel="noopener">View repo →</a>
+          <div class="card-metric">Version: <strong>v1.7.3</strong></div>
+          <a class="card-link" href="https://github.com/allanta8/Gemradar" target="_blank" rel="noopener">View repo →</a>
+        </div>
+
+        <!-- Roseon -->
+        <div class="feature-card">
+          <div class="card-top">
+            <span class="pill live">LIVE</span>
+          </div>
+          <h3>Roseon App</h3>
+          <p>Mobile crypto trading and earning app — trade, stake, lend, farm, and bridge across 7 chains, with a built-in launchpad, NFT gallery, and DePIN light node for passive yield. Live on Android and iOS.</p>
+          <div class="stack-tags">
+            <span class="tag">Multi-Chain</span>
+            <span class="tag">DeFi</span>
+            <span class="tag">Mobile</span>
+          </div>
+          <div class="card-metric">Reach: <strong>350K+ registered users</strong></div>
+          <a class="card-link" href="https://play.google.com/store/apps/details?id=roseon.finance&hl=en_CA" target="_blank" rel="noopener">View on Play Store →</a>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ALL REPOS -->
+  <!-- IN PROGRESS -->
   <section id="repos">
     <div class="wrap">
       <div class="section-head">
-        <div class="section-label">All Repos</div>
-        <h2>Everything else, across accounts</h2>
-        <p class="section-sub">Spread across multiple GitHub accounts by necessity, collected here on purpose. Filter by category.</p>
-      </div>
-
-      <div class="filter-row">
-        <button class="filter-pill active" data-filter="all">All</button>
-        <button class="filter-pill" data-filter="ai">AI Infra</button>
-        <button class="filter-pill" data-filter="crypto">Crypto</button>
-        <button class="filter-pill" data-filter="tools">Tools</button>
+        <div class="section-label">In Progress</div>
+        <h2>What I'm working on right now</h2>
+        <p class="section-sub">The active build queue — tools getting shaped before they're ready to ship.</p>
       </div>
 
       <div class="repo-grid" id="repoGrid">
-        <!-- Repo cards injected/filterable -->
-        <div class="repo-card" data-cat="ai">
+        <div class="repo-card">
+          <div class="repo-top"><span class="repo-name">job-search-automation</span></div>
+          <p class="repo-desc">End-to-end job search pipeline across Indeed, ZipRecruiter, Dice, and LinkedIn — search, shortlist, and application drafting in one workflow.</p>
+          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
+        </div>
+        <div class="repo-card">
           <div class="repo-top"><span class="repo-name">x-content.skill</span></div>
-          <p class="repo-desc">Voice-routed content generation skill — Degen Builder for crypto-native X, professional 70/30 split for LinkedIn.</p>
-          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
-        </div>
-        <div class="repo-card" data-cat="ai">
-          <div class="repo-top"><span class="repo-name">anti-slop</span></div>
-          <p class="repo-desc">AI slop detection framework — 5 categories, 10-point checklist, 8-dimension audit scoring system.</p>
-          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
-        </div>
-        <div class="repo-card" data-cat="tools">
-          <div class="repo-top"><span class="repo-name">search.md</span></div>
-          <p class="repo-desc">Crypto/finance research skill with built-in false-consensus checks and institutional-view search routing.</p>
-          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
-        </div>
-        <div class="repo-card" data-cat="crypto">
-          <div class="repo-top"><span class="repo-name">elera-x-trends</span></div>
-          <p class="repo-desc">Trending-topic scoring engine for crypto/markets content — velocity, engagement, momentum, influence weighting.</p>
-          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
-        </div>
-        <div class="repo-card" data-cat="tools">
-          <div class="repo-top"><span class="repo-name">linkedin-algo-ref</span></div>
-          <p class="repo-desc">Operational reference docs for platform algorithm behavior — built from primary research, not guesswork.</p>
-          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
-        </div>
-        <div class="repo-card" data-cat="ai">
-          <div class="repo-top"><span class="repo-name">awwra-brand-system</span></div>
-          <p class="repo-desc">Brand guide and component system for awwra.ai — gradient identity, logo system, typography tokens. On hold.</p>
+          <p class="repo-desc">X growth automation skill — writes engaging posts, replies to relevant content, and grows the account on autopilot. Voice-routed: Degen Builder for AI and content distribution.</p>
           <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
         </div>
       </div>
@@ -492,7 +466,7 @@
         <h2>Insights beyond the noise</h2>
         <p>I'm <strong>Allan Ta</strong> — a context engineer, builder, and GTM strategist. Most of what's above started as a problem in my own workflow: a content pipeline that took too long, a quality bar that kept slipping, a research process that trusted the first consensus it found.</p>
         <p>I write about <strong>AI, crypto, markets, and the trust gap in financial media</strong> on X. The products above are the proof-of-concept layer underneath that writing — I'd rather ship the system than just describe it.</p>
-        <p>Right now that's <strong>Elera AI</strong> full-time, plus the X automation pipeline running on a live account as its proof of concept. <strong>awwra.ai</strong>, a creator platform I built brand and product work for earlier this year, is on hold while Elera takes priority.</p>
+        <p>I'm a former co-founder of <strong>Roseon Labs</strong>, where we built <strong>Roseon App</strong> into a multi-chain crypto platform used by 350K+ registered users. With AI, I've gone solo — now an indie hacker building the next wave of AI-native tools, with <strong>Elera AI</strong> as the consulting practice and <strong>ViewDAO</strong>, <strong>slop-check</strong>, and <strong>Gemradar</strong> as the proof-of-concept layer underneath it.</p>
       </div>
       <div class="trust-box">
         <div class="label">The Trust Gap</div>
@@ -519,21 +493,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-  const pills = document.querySelectorAll('.filter-pill');
-  const cards = document.querySelectorAll('.repo-card');
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      pills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      const filter = pill.dataset.filter;
-      cards.forEach(card => {
-        card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
-      });
-    });
-  });
-</script>
 
 </body>
 </html>
