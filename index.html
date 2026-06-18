@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allan Ta — Context Engineer / Builder / GTM</title>
+<meta name="description" content="Allan Ta builds AI infrastructure and GTM systems. Founder, Elera AI. Insights beyond the noise.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#070A0F;
+    --graphite:#1A1F2B;
+    --slate:#0F141E;
+    --wire:#23293A;
+    --purple:#7B5CFF;
+    --blue:#2563EB;
+    --cyan:#00D4FF;
+    --paper:#EDEFF5;
+    --ghost:#8A93A6;
+    --gradient: linear-gradient(90deg, var(--purple), var(--blue), var(--cyan));
+    --up:#34D399;
+    --down:#FB7185;
+    --hold:#FBBF24;
+    --radius: 14px;
+    --maxw: 1180px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  ::selection{ background: var(--purple); color: var(--ink); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  .gradient-text{
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(7,10,15,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--wire);
+  }
+  .navrow{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 28px; max-width: var(--maxw); margin: 0 auto;
+  }
+  .logo{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700; font-size: 1.25rem; letter-spacing: -0.01em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .dot{
+    width:8px; height:8px; border-radius:50%;
+    background: var(--cyan); box-shadow: 0 0 10px var(--cyan);
+  }
+  nav ul{ display:flex; gap: 28px; list-style:none; margin:0; padding:0; }
+  nav a{
+    font-size: 0.92rem; color: var(--ghost); transition: color .15s ease;
+  }
+  nav a:hover{ color: var(--paper); }
+  .navcta{
+    border: 1px solid var(--wire); padding: 8px 16px; border-radius: 999px;
+    font-size: 0.85rem; font-family:'IBM Plex Mono', monospace;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .navcta:hover{ border-color: var(--purple); background: rgba(123,92,255,0.08); }
+  .navtoggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 90px 0 70px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--wire);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; top:-200px; right:-200px;
+    width:560px; height:560px; border-radius:50%;
+    background: radial-gradient(circle, rgba(123,92,255,0.22), transparent 70%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.3fr 0.85fr; gap: 56px; align-items:start;
+    position: relative; z-index: 1;
+  }
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono', monospace; font-size: 0.82rem;
+    color: var(--cyan); letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before{
+    content:""; width: 22px; height: 1px; background: var(--cyan);
+  }
+  h1.headline{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    margin: 0 0 22px;
+  }
+  .sub{
+    font-size: 1.08rem; color: var(--ghost); max-width: 540px; margin: 0 0 32px;
+  }
+  .hero-ctas{ display:flex; gap: 14px; flex-wrap: wrap; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size: 0.88rem;
+    padding: 13px 22px; border-radius: 10px; display:inline-flex; align-items:center; gap:8px;
+    transition: transform .15s ease, opacity .15s ease;
+  }
+  .btn-primary{
+    background: var(--gradient); color: var(--ink); font-weight: 500;
+  }
+  .btn-primary:hover{ transform: translateY(-2px); }
+  .btn-ghost{
+    border: 1px solid var(--wire); color: var(--paper);
+  }
+  .btn-ghost:hover{ border-color: var(--cyan); color: var(--cyan); }
+
+  /* ticker card */
+  .ticker-card{
+    background: var(--graphite);
+    border: 1px solid var(--wire);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .ticker-title{
+    font-family:'IBM Plex Mono', monospace; font-size: 0.75rem;
+    color: var(--ghost); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 16px; display:flex; justify-content: space-between;
+  }
+  .ticker-row{
+    display:flex; justify-content: space-between; align-items:center;
+    padding: 11px 0; border-bottom: 1px solid var(--wire);
+    font-family:'IBM Plex Mono', monospace; font-size: 0.86rem;
+  }
+  .ticker-row:last-child{ border-bottom: none; }
+  .ticker-name{ color: var(--paper); }
+  .ticker-meta{ color: var(--ghost); font-size: 0.78rem; }
+  .delta{ font-weight: 500; }
+  .delta.up{ color: var(--up); }
+  .delta.hold{ color: var(--hold); }
+  .delta.live{ color: var(--cyan); }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{ padding: 84px 0; border-bottom: 1px solid var(--wire); }
+  .section-head{ margin-bottom: 44px; max-width: 640px; }
+  .section-label{
+    font-family:'IBM Plex Mono', monospace; font-size: 0.78rem;
+    color: var(--purple); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  h2{
+    font-family:'Space Grotesk', sans-serif; font-weight: 600;
+    font-size: clamp(1.7rem, 3vw, 2.3rem); margin: 0 0 12px; letter-spacing: -0.01em;
+  }
+  .section-sub{ color: var(--ghost); font-size: 1rem; }
+
+  /* ---------- FEATURED WORK ---------- */
+  .featured-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  .feature-card{
+    background: var(--graphite);
+    border: 1px solid var(--wire);
+    border-radius: var(--radius);
+    padding: 28px;
+    position: relative;
+    display:flex; flex-direction: column; gap: 16px;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .feature-card:hover{ transform: translateY(-4px); border-color: rgba(123,92,255,0.5); }
+  .feature-card::after{
+    content:""; position:absolute; inset:0; border-radius: var(--radius);
+    padding: 1px; background: var(--gradient);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity .2s ease; pointer-events:none;
+  }
+  .feature-card:hover::after{ opacity: 1; }
+
+  .card-top{ display:flex; justify-content: space-between; align-items: flex-start; }
+  .card-icon{
+    width: 38px; height: 38px; border-radius: 9px;
+    background: var(--slate); border: 1px solid var(--wire);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 1.1rem;
+  }
+  .pill{
+    font-family:'IBM Plex Mono', monospace; font-size: 0.7rem;
+    padding: 4px 10px; border-radius: 999px; letter-spacing: 0.04em;
+    border: 1px solid currentColor;
+  }
+  .pill.live{ color: var(--cyan); }
+  .pill.shipped{ color: var(--up); }
+  .pill.hold{ color: var(--hold); }
+
+  .feature-card h3{
+    font-family:'Space Grotesk', sans-serif; font-size: 1.25rem; margin: 0;
+    font-weight: 600;
+  }
+  .feature-card p{ color: var(--ghost); font-size: 0.94rem; margin: 0; flex-grow: 1; }
+  .stack-tags{ display:flex; flex-wrap: wrap; gap: 7px; }
+  .tag{
+    font-family:'IBM Plex Mono', monospace; font-size: 0.72rem;
+    color: var(--ghost); background: var(--slate); border: 1px solid var(--wire);
+    padding: 4px 9px; border-radius: 6px;
+  }
+  .card-metric{
+    font-family:'IBM Plex Mono', monospace; font-size: 0.82rem;
+    color: var(--paper); border-top: 1px solid var(--wire); padding-top: 14px;
+  }
+  .card-metric strong{ color: var(--cyan); font-weight: 500; }
+  .card-link{
+    font-family:'IBM Plex Mono', monospace; font-size: 0.82rem;
+    color: var(--purple); display:flex; align-items:center; gap:6px;
+  }
+  .feature-card:hover .card-link{ color: var(--cyan); }
+
+  /* ---------- REPO GRID ---------- */
+  .filter-row{ display:flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+  .filter-pill{
+    font-family:'IBM Plex Mono', monospace; font-size: 0.8rem;
+    padding: 8px 16px; border-radius: 999px; border: 1px solid var(--wire);
+    color: var(--ghost); cursor: pointer; transition: all .15s ease; background:none;
+  }
+  .filter-pill:hover{ border-color: var(--purple); color: var(--paper); }
+  .filter-pill.active{ background: var(--gradient); color: var(--ink); border-color: transparent; }
+
+  .repo-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .repo-card{
+    background: var(--slate); border: 1px solid var(--wire); border-radius: 12px;
+    padding: 20px; transition: border-color .15s ease, transform .15s ease;
+  }
+  .repo-card:hover{ border-color: var(--blue); transform: translateY(-2px); }
+  .repo-top{ display:flex; justify-content: space-between; align-items:flex-start; margin-bottom: 8px; }
+  .repo-name{ font-family:'IBM Plex Mono', monospace; font-size: 0.92rem; color: var(--cyan); }
+  .repo-desc{ font-size: 0.88rem; color: var(--ghost); margin: 0 0 14px; min-height: 40px; }
+  .repo-foot{ display:flex; justify-content: space-between; align-items:center; }
+  .repo-account{ font-family:'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--ghost); }
+
+  /* ---------- ABOUT / TRUST GAP ---------- */
+  .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items:center; }
+  .trust-box{
+    border: 1px solid var(--cyan); border-radius: var(--radius);
+    padding: 26px; background: rgba(0,212,255,0.04);
+  }
+  .trust-box .label{
+    font-family:'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--cyan);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;
+  }
+  .trust-box p{ margin: 0 0 6px; font-size: 1.05rem; }
+  .trust-box .accent{ color: var(--purple); }
+  .trust-box .accent2{ color: var(--cyan); }
+  .about-copy p{ color: var(--ghost); font-size: 1rem; margin: 0 0 18px; }
+  .about-copy strong{ color: var(--paper); font-weight: 500; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding: 56px 0 40px; }
+  .footer-row{
+    display:flex; justify-content: space-between; align-items:center; flex-wrap: wrap; gap: 20px;
+    padding-top: 28px; border-top: 1px solid var(--wire);
+  }
+  .footer-links{ display:flex; gap: 22px; flex-wrap: wrap; }
+  .footer-links a{ font-size: 0.88rem; color: var(--ghost); transition: color .15s ease; }
+  .footer-links a:hover{ color: var(--cyan); }
+  .footer-tag{ font-family:'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--ghost); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px){
+    nav ul{ display:none; }
+    .hero-grid{ grid-template-columns: 1fr; }
+    .featured-grid{ grid-template-columns: 1fr; }
+    .repo-grid{ grid-template-columns: 1fr 1fr; }
+    .about-grid{ grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px){
+    .repo-grid{ grid-template-columns: 1fr; }
+    .navrow{ padding: 14px 18px; }
+    .wrap{ padding: 0 18px; }
+    section{ padding: 60px 0; }
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--cyan); outline-offset: 2px; border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navrow">
+    <a href="#top" class="logo"><span class="dot"></span>allan</a>
+    <nav>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#repos">Repos</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+    <a class="navcta" href="https://x.com/A11anTa" target="_blank" rel="noopener">@A11anTa</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="border-bottom:1px solid var(--wire); padding-top:90px;">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Context Engineer / Builder / GTM</div>
+        <h1 class="headline">I build the systems.<br>Then I write about <span class="gradient-text">why they work.</span></h1>
+        <p class="sub">Founder of Elera AI. I design and ship AI infrastructure, GTM automation, and content systems — then cover AI, crypto, and the trust gap in financial media on the other side of the screen.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#work">View the work ↓</a>
+          <a class="btn btn-ghost" href="mailto:hello@example.com">Get in touch →</a>
+        </div>
+      </div>
+
+      <div class="ticker-card">
+        <div class="ticker-title"><span>STATUS</span><span>UPDATED 2026</span></div>
+        <div class="ticker-row">
+          <div><div class="ticker-name">Elera AI</div><div class="ticker-meta">B2B AI consulting</div></div>
+          <div class="delta live">LIVE</div>
+        </div>
+        <div class="ticker-row">
+          <div><div class="ticker-name">X Automation Pipeline</div><div class="ticker-meta">Trend detection → publish</div></div>
+          <div class="delta up">SHIPPED</div>
+        </div>
+        <div class="ticker-row">
+          <div><div class="ticker-name">gitdb.md</div><div class="ticker-meta">OSS tool catalog</div></div>
+          <div class="delta up">SHIPPED</div>
+        </div>
+        <div class="ticker-row">
+          <div><div class="ticker-name">awwra.ai</div><div class="ticker-meta">Creator platform</div></div>
+          <div class="delta hold">ON HOLD</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-label">Featured Work</div>
+        <h2>Three things I'd point a client to first</h2>
+        <p class="section-sub">Not every repo deserves your attention. These do — they're live, generating outcomes, or running in production right now.</p>
+      </div>
+
+      <div class="featured-grid">
+
+        <!-- Elera AI -->
+        <div class="feature-card">
+          <div class="card-top">
+            <div class="card-icon">◆</div>
+            <span class="pill live">LIVE</span>
+          </div>
+          <h3>Elera AI</h3>
+          <p>B2B AI consulting practice for enterprises, startups, and marketing agencies. Context engineering and GTM systems design, with a live proof-of-concept analyst persona running on X as the demo.</p>
+          <div class="stack-tags">
+            <span class="tag">Claude API</span>
+            <span class="tag">GTM Strategy</span>
+            <span class="tag">Context Eng</span>
+          </div>
+          <div class="card-metric">Status: <strong>active consulting pipeline</strong></div>
+          <a class="card-link" href="#" target="_blank" rel="noopener">View repo →</a>
+        </div>
+
+        <!-- X Automation -->
+        <div class="feature-card">
+          <div class="card-top">
+            <div class="card-icon">⚡</div>
+            <span class="pill shipped">SHIPPED</span>
+          </div>
+          <h3>X Automation Pipeline</h3>
+          <p>End-to-end content pipeline: trend detection scoring, approval gating, multi-account posting, KOL reply generation, and image generation — wired together for a fraction of what an agency would charge per post.</p>
+          <div class="stack-tags">
+            <span class="tag">X API</span>
+            <span class="tag">DALL·E 3</span>
+            <span class="tag">Notion</span>
+            <span class="tag">SendGrid</span>
+          </div>
+          <div class="card-metric">Cost: <strong>~$3/mo for 30 posts</strong></div>
+          <a class="card-link" href="#" target="_blank" rel="noopener">View repo →</a>
+        </div>
+
+        <!-- gitdb.md -->
+        <div class="feature-card">
+          <div class="card-top">
+            <div class="card-icon">▣</div>
+            <span class="pill shipped">SHIPPED</span>
+          </div>
+          <h3>gitdb.md</h3>
+          <p>A running, persistent catalog of open-source tools worth knowing — video generation, desktop notes apps, screen recording, AI property tours. Curated and maintained, not a one-time list.</p>
+          <div class="stack-tags">
+            <span class="tag">OSS Research</span>
+            <span class="tag">Markdown</span>
+            <span class="tag">Cataloging</span>
+          </div>
+          <div class="card-metric">Tracking: <strong>5+ tools and counting</strong></div>
+          <a class="card-link" href="#" target="_blank" rel="noopener">View repo →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL REPOS -->
+  <section id="repos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-label">All Repos</div>
+        <h2>Everything else, across accounts</h2>
+        <p class="section-sub">Spread across multiple GitHub accounts by necessity, collected here on purpose. Filter by category.</p>
+      </div>
+
+      <div class="filter-row">
+        <button class="filter-pill active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="ai">AI Infra</button>
+        <button class="filter-pill" data-filter="crypto">Crypto</button>
+        <button class="filter-pill" data-filter="tools">Tools</button>
+      </div>
+
+      <div class="repo-grid" id="repoGrid">
+        <!-- Repo cards injected/filterable -->
+        <div class="repo-card" data-cat="ai">
+          <div class="repo-top"><span class="repo-name">x-content.skill</span></div>
+          <p class="repo-desc">Voice-routed content generation skill — Degen Builder for crypto-native X, professional 70/30 split for LinkedIn.</p>
+          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
+        </div>
+        <div class="repo-card" data-cat="ai">
+          <div class="repo-top"><span class="repo-name">anti-slop</span></div>
+          <p class="repo-desc">AI slop detection framework — 5 categories, 10-point checklist, 8-dimension audit scoring system.</p>
+          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
+        </div>
+        <div class="repo-card" data-cat="tools">
+          <div class="repo-top"><span class="repo-name">search.md</span></div>
+          <p class="repo-desc">Crypto/finance research skill with built-in false-consensus checks and institutional-view search routing.</p>
+          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
+        </div>
+        <div class="repo-card" data-cat="crypto">
+          <div class="repo-top"><span class="repo-name">elera-x-trends</span></div>
+          <p class="repo-desc">Trending-topic scoring engine for crypto/markets content — velocity, engagement, momentum, influence weighting.</p>
+          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
+        </div>
+        <div class="repo-card" data-cat="tools">
+          <div class="repo-top"><span class="repo-name">linkedin-algo-ref</span></div>
+          <p class="repo-desc">Operational reference docs for platform algorithm behavior — built from primary research, not guesswork.</p>
+          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
+        </div>
+        <div class="repo-card" data-cat="ai">
+          <div class="repo-top"><span class="repo-name">awwra-brand-system</span></div>
+          <p class="repo-desc">Brand guide and component system for awwra.ai — gradient identity, logo system, typography tokens. On hold.</p>
+          <div class="repo-foot"><span class="repo-account">@allanta8</span><a href="#">→</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / TRUST GAP -->
+  <section id="about" style="border-bottom:none;">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <div class="section-label">About</div>
+        <h2>Insights beyond the noise</h2>
+        <p>I'm <strong>Allan Ta</strong> — a context engineer, builder, and GTM strategist. Most of what's above started as a problem in my own workflow: a content pipeline that took too long, a quality bar that kept slipping, a research process that trusted the first consensus it found.</p>
+        <p>I write about <strong>AI, crypto, markets, and the trust gap in financial media</strong> on X. The products above are the proof-of-concept layer underneath that writing — I'd rather ship the system than just describe it.</p>
+        <p>Currently building <strong>Elera AI</strong>, a B2B AI consulting practice, and running a secondary creator-platform project, <strong>awwra.ai</strong>, on hold for now.</p>
+      </div>
+      <div class="trust-box">
+        <div class="label">The Trust Gap</div>
+        <p>Question more.</p>
+        <p><span class="accent">Trust less.</span></p>
+        <p><span class="accent2">Think deeper.</span></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-tag mono">allan.ta — context engineer / builder / gtm</div>
+      <div class="footer-links">
+        <a href="https://x.com/A11anTa" target="_blank" rel="noopener">X — Personal</a>
+        <a href="https://x.com/EleraAI" target="_blank" rel="noopener">X — Elera AI</a>
+        <a href="https://github.com/allanta8" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:hello@example.com">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const pills = document.querySelectorAll('.filter-pill');
+  const cards = document.querySelectorAll('.repo-card');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.dataset.filter;
+      cards.forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
