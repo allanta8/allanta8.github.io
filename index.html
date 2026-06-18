@@ -291,6 +291,9 @@
   .footer-tag{ font-family:'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--ghost); }
 
   /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 560px){
+    .navrow .navcta:first-of-type{ display:none; }
+  }
   @media (max-width: 880px){
     nav ul{ display:none; }
     .hero-grid{ grid-template-columns: 1fr; }
@@ -323,7 +326,10 @@
         <li><a href="#about">About</a></li>
       </ul>
     </nav>
-    <a class="navcta" href="https://x.com/A11anTa" target="_blank" rel="noopener">@A11anTa</a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <a class="navcta" href="https://www.linkedin.com/in/allanta/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="navcta" href="https://x.com/A11anTa" target="_blank" rel="noopener">@A11anTa</a>
+    </div>
   </div>
 </header>
 
@@ -338,7 +344,7 @@
         <p class="sub">Founder of Elera AI. I design and ship AI infrastructure, GTM automation, and content systems — then cover AI, crypto, and the trust gap in financial media on the other side of the screen.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#work">View the work ↓</a>
-          <a class="btn btn-ghost" href="mailto:hello@example.com">Get in touch →</a>
+          <a class="btn btn-ghost" href="mailto:allan.ta8@gmail.com">Get in touch →</a>
         </div>
       </div>
 
@@ -423,7 +429,7 @@
             <span class="tag">Markdown</span>
             <span class="tag">Cataloging</span>
           </div>
-          <div class="card-metric">Tracking: <strong>5+ tools and counting</strong></div>
+          <div class="card-metric">Tracking: <strong>6 tools, updated as I find more</strong></div>
           <a class="card-link" href="#" target="_blank" rel="noopener">View repo →</a>
         </div>
 
@@ -491,7 +497,7 @@
         <h2>Insights beyond the noise</h2>
         <p>I'm <strong>Allan Ta</strong> — a context engineer, builder, and GTM strategist. Most of what's above started as a problem in my own workflow: a content pipeline that took too long, a quality bar that kept slipping, a research process that trusted the first consensus it found.</p>
         <p>I write about <strong>AI, crypto, markets, and the trust gap in financial media</strong> on X. The products above are the proof-of-concept layer underneath that writing — I'd rather ship the system than just describe it.</p>
-        <p>Currently building <strong>Elera AI</strong>, a B2B AI consulting practice, and running a secondary creator-platform project, <strong>awwra.ai</strong>, on hold for now.</p>
+        <p>Right now that's <strong>Elera AI</strong> full-time, plus the X automation pipeline running on a live account as its proof of concept. <strong>awwra.ai</strong>, a creator platform I built brand and product work for earlier this year, is on hold while Elera takes priority.</p>
       </div>
       <div class="trust-box">
         <div class="label">The Trust Gap</div>
@@ -511,8 +517,9 @@
       <div class="footer-links">
         <a href="https://x.com/A11anTa" target="_blank" rel="noopener">X — Personal</a>
         <a href="https://x.com/EleraAI" target="_blank" rel="noopener">X — Elera AI</a>
+        <a href="https://www.linkedin.com/in/allanta/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/allanta8" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:hello@example.com">Email</a>
+        <a href="mailto:allan.ta8@gmail.com">Email</a>
       </div>
     </div>
   </div>
