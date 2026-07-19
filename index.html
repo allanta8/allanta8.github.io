@@ -56,10 +56,12 @@
 
     .agent-stage { position: relative; }
     .agent-stage::before { content: "LIVE USE CASE"; position: absolute; top: -18px; right: -18px; z-index: 2; padding: 9px 13px; background: var(--yellow); color: var(--black); font: 600 .68rem "IBM Plex Mono", monospace; letter-spacing: .08em; transform: rotate(3deg); }
-    .agent-card { padding: 10px; border: 1px solid #000; background: #000; box-shadow: 20px 20px 0 var(--yellow); }
+    .agent-card { position: relative; padding: 10px; border: 1px solid #000; background: #000; box-shadow: 20px 20px 0 var(--yellow); }
     .agent-bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 9px 17px; }
     .agent-bar span:last-child { color: var(--yellow); }
     .agent-frame { display: block; width: 100%; height: 610px; border: 1px solid #000; border-radius: 18px; background: transparent; }
+    .agent-powered { position: absolute; right: 11px; bottom: 11px; left: 11px; z-index: 2; display: grid; height: 36px; place-items: center; border-radius: 0 0 17px 17px; background: #fff; color: #777; font-size: 11px; font-weight: 800; }
+    .agent-powered:hover { color: #111; }
     .agent-note { margin: 30px 0 0 20px; color: var(--muted); font-size: .85rem; }
     .agent-note strong { color: var(--white); }
 
@@ -156,6 +158,7 @@
           <div class="agent-card">
             <div class="agent-bar mono"><span>Allanta agent</span><span>● Online</span></div>
             <iframe class="agent-frame" src="https://brainsite.ai/embed/allanta" title="Chat with the Allanta BrainSite agent" allow="clipboard-write"></iframe>
+            <a class="agent-powered" href="https://brainsite.ai" target="_blank" rel="noopener">Powered by BrainSite</a>
           </div>
           <p class="agent-note"><strong>Go ahead, ask something.</strong> This is a live BrainSite agent trained on my work.</p>
         </div>
