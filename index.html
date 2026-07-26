@@ -55,7 +55,7 @@
     .proof span::before { content: "+"; margin-right: 7px; color: var(--yellow); }
 
     .agent-stage { align-self: start; }
-    .agent-frame-crop { position: relative; height: 740px; max-height: 80vh; overflow: hidden; border-radius: 14px; background: #000; }
+    .agent-frame-crop { position: relative; height: 460px; max-height: 80vh; overflow: hidden; border-radius: 14px; background: #000; transition: height .18s ease; }
     .agent-frame { position: absolute; top: -20px; left: -20px; display: block; width: calc(100% + 40px); height: calc(100% + 40px); border: 0; background: transparent; }
 
     section { border-bottom: 1px solid var(--line); }
@@ -246,5 +246,16 @@
       </div>
     </div>
   </footer>
+  <script>
+    window.addEventListener("message", function (event) {
+      if (event.origin !== "https://brainsite.ai") return;
+      var data = event.data;
+      if (!data || data.source !== "brainsite-widget" || data.type !== "resize") return;
+      var crop = document.querySelector(".agent-frame-crop");
+      if (!crop) return;
+      var height = Math.max(360, Math.min(data.height + 40, window.innerHeight * 0.8));
+      crop.style.height = height + "px";
+    });
+  </script>
 </body>
 </html>
