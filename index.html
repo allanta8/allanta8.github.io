@@ -55,8 +55,7 @@
     .proof span::before { content: "+"; margin-right: 7px; color: var(--yellow); }
 
     .agent-stage { align-self: start; }
-    .agent-frame-crop { position: relative; height: 460px; max-height: 80vh; overflow: hidden; border-radius: 14px; background: #000; transition: height .18s ease; }
-    .agent-frame { position: absolute; top: -20px; left: -20px; display: block; width: calc(100% + 40px); height: calc(100% + 40px); border: 0; background: transparent; }
+    .agent-widget { min-height: 460px; border-radius: 14px; background: #000; overflow: hidden; }
 
     section { border-bottom: 1px solid var(--line); }
     .section-pad { padding: 104px 0; }
@@ -149,8 +148,8 @@
         </div>
 
         <div class="agent-stage">
-          <div class="agent-frame-crop">
-            <iframe class="agent-frame" src="https://brainsite.ai/embed/allanta" title="Chat with the Allanta BrainSite agent" allow="clipboard-write"></iframe>
+          <div class="agent-widget">
+            <script async data-display="expanded" src="https://brainsite.ai/api/v1/widgets/agent6/script"></script>
           </div>
         </div>
       </div>
@@ -246,16 +245,5 @@
       </div>
     </div>
   </footer>
-  <script>
-    window.addEventListener("message", function (event) {
-      if (event.origin !== "https://brainsite.ai") return;
-      var data = event.data;
-      if (!data || data.source !== "brainsite-widget" || data.type !== "resize") return;
-      var crop = document.querySelector(".agent-frame-crop");
-      if (!crop) return;
-      var height = Math.max(360, Math.min(data.height + 40, window.innerHeight * 0.8));
-      crop.style.height = height + "px";
-    });
-  </script>
 </body>
 </html>
