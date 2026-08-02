@@ -54,8 +54,9 @@
     .proof { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 38px; color: var(--muted); }
     .proof span::before { content: "+"; margin-right: 7px; color: var(--yellow); }
 
-    .agent-stage { align-self: start; }
-    .agent-widget { display: flex; justify-content: flex-end; width: 100%; }
+    .agent-stage { align-self: start; display: flex; justify-content: flex-end; padding-top: 40px; }
+    .agent-widget { display: flex; justify-content: flex-end; width: 100%; min-height: 512px; }
+    .agent-widget #brainsite-widget-allanta { width: min(100%, 380px) !important; height: 512px !important; max-width: 100% !important; max-height: none !important; position: static !important; inset: auto !important; z-index: 1 !important; }
 
     section { border-bottom: 1px solid var(--line); }
     .section-pad { padding: 104px 0; }
@@ -97,7 +98,8 @@
     @media (max-width: 900px) {
       nav a:not(.nav-cta) { display: none; }
       .hero-grid { grid-template-columns: 1fr; padding: 72px 0 92px; }
-      .agent-stage { width: min(100%, 520px); margin: 10px auto 0; }
+      .agent-stage { width: min(100%, 520px); margin: 10px auto 0; justify-content: center; padding-top: 0; }
+      .agent-widget { justify-content: center; }
       .section-heading, .usecase-grid, .about-grid { grid-template-columns: 1fr; }
       .section-heading { gap: 18px; }
     }
@@ -245,5 +247,32 @@
       </div>
     </div>
   </footer>
+  <script>
+    (function () {
+      var slot = document.querySelector(".agent-widget");
+      if (!slot) return;
+
+      function placeWidget() {
+        var widget = document.getElementById("brainsite-widget-allanta");
+        if (!widget) return false;
+        if (widget.parentElement !== slot) slot.appendChild(widget);
+        widget.style.position = "static";
+        widget.style.inset = "auto";
+        widget.style.width = "min(100%, 380px)";
+        widget.style.height = "512px";
+        widget.style.maxWidth = "100%";
+        widget.style.maxHeight = "none";
+        widget.style.zIndex = "1";
+        return true;
+      }
+
+      if (placeWidget()) return;
+
+      var observer = new MutationObserver(function () {
+        if (placeWidget()) observer.disconnect();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
 </body>
 </html>
